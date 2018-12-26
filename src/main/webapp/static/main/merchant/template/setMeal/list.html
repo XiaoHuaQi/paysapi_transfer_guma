@@ -1,0 +1,75 @@
+<div ng-click="closeAllBox()">
+
+	<div class="nowNav mg-b-16">
+		<div class="row">
+			<span>当前位置：</span> <a href="javascript:;">套餐列表</a> <i
+				class="mg-l-8 mg-r-8">/</i> <a href="javascript:;">套餐列表</a>
+		</div>
+	</div>
+	<!--门店管理-->
+	<div class="public-Bg border-radius pd-24 mg-b-16">
+		<div class="row">
+			<div class="publicTitle tableTitle title-border pd-b-24">
+				<span>套餐列表</span>
+			</div>
+		</div>
+
+
+		<div class="border-radius  tableRange mg-t-24">
+
+			<div class="appBox clearfix">
+
+				<div class="app1" ng-repeat="item in rowList">
+					<div class="app2 border-radius" ng-click='skipToModule(item)'>
+						<!-- <div class="appLeft fl mg-r-16">
+							<img
+								ng-src="{{item.url}}"
+								alt="">
+						</div> -->
+						<div class="appRight">
+							<div class="cardInput clearfix">
+								<span class="text-md textColor1 textDold fl">{{item.title}}</span>
+							</div>
+							<div class="textColor2 row">
+								<p class="textColor1 fl">
+									价格：<span class="textColor3">{{item.price/100}}</span>
+								</p>
+								<p class="textColor1 fl mg-l-24">
+									手续费（千分值）：<span class="textColor3">{{item.procedures}}</span>
+								</p>
+								<p class="textColor1 fl mg-l-24">
+									时间： <span class="textColor3">{{item.timeStr}}</span>
+								</p>
+							</div>
+							<div class="textColor2 row mg-t-16">
+								<p class="textColor1 fl describes">{{item.describes}}</p>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row pageBox" ng-show="rowList.length>0">
+				<div class="first" ng-click="indexPage()">首页</div>
+				<button class="btn mg-l-16 mg-r-16" ng-click="prePage()">上一页</button>
+
+				<button
+					class=" num btn mg-r-8  {{currentPage==page?'pageSelect':''}}"
+					ng-repeat="page in totalPageList" ng-click="onPageClick(page)">{{page}}</button>
+
+				<button class="num btn"
+					ng-show="totalPage>=5&&totalPage-currentPage>=5">...</button>
+
+				<button class="btn mg-l-8" ng-click="nextPage()">下一页</button>
+				<div class="up">
+					跳转到 <input type="number" ng-model="pageInput">页
+				</div>
+				<button class="btn mg-l-8" ng-click="skipPage()">确定</button>
+				<div class="end mg-r-16" ng-click="lastPage()">尾页</div>
+				<div class="end">当前第{{currentPage}}页/共{{totalPage}}页</div>
+			</div>
+		</div>
+
+	</div>

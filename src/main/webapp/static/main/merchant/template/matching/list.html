@@ -1,0 +1,151 @@
+<div ng-click="closeAllBox()">
+
+
+	<div class="nowNav mg-b-16">
+		<div class="row">
+			<span>当前位置：</span> <a href="javascript:;">无匹配订单收款</a>
+		</div>
+	</div>
+	<!--门店管理-->
+	<div class="public-Bg border-radius pd-24 mg-b-16">
+		<div class="row">
+			<div class="publicTitle tableTitle title-border pd-b-24">
+				<span>无匹配订单收款</span>
+			</div>
+		</div>
+		<div class="alertWarningBox row border-radius box-border mg-t-24">
+			<div class="alertWarningLeft">
+				<i class="iconfont icon-hint"></i>
+			</div>
+
+			<div class="alertWarning  pd-16 ">
+				<!-- <i class="iconfont icon-disable"></i> -->
+				1.有人向您收款二维码直接转账，没走支付接口（可能是朋友，也可能是老客户）。
+				2.用户用支付宝微信扫码后未及时支付，在订单超时后才回来支付，此时订单已关闭。(解决方案：如此情况较多，请在设置中适当延长二维码过期时间)
+				3.任意金额二维码收款时，用户输错金额，导致订单匹配不上。(解决方案：多上传定额收款二维码，尽量覆盖用户可能用到的金额)
+				4.手机通知延迟到订单超时。支付宝微信的重复通知，也会在这里留下记录。（解决方案：请勿在多台手机安装APP并登录同一个账号，同时确保手机网络通畅。）
+			</div>
+
+		</div>
+
+
+		<div class="row mg-t-24 mg-b-24">
+			<div class="row">
+
+				<div class="defaultTime">
+					<input type="date" placeholder="请选择日期" ng-model="startTime"
+						ng-change="onStartTimeChange()">
+				</div>
+				<span class="actText mg-r-8 mg-l-8">至</span>
+				<div class="defaultTime">
+					<input type="date" placeholder="请选择日期" ng-model="endTime"
+						ng-change="onEndTimeChange()">
+				</div>
+
+			</div>
+
+			<div class="dropDownBox border-radius  mg-l-24">
+				<div class="mg-r-24  border-radius pre">
+
+					<div ng-click="showTypechange()" class="row timeDrop">
+
+						<input class="inputBox pullDownRight timeDrop border-radius"
+							type="text" placeholder="请选择收款通道" disabled="disabled"
+							ng-model="typeChangeObj.name"> <a href="javascript:;"
+							class="pullDownBtn fl"> <i class="iconfont icon-pulldown"></i>
+						</a>
+
+					</div>
+
+					<ul class="dropBox" ng-show="isShowTypeChange">
+						<li ng-repeat="item in changeTypeList"><a href="javascript:;"
+							title="" ng-click="typeChoise(item)">{{item.name}}</a></li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="row mg-b-24">
+
+			<!-- <div class="dropDownBox border-radius box-border searchDropDown">
+			<div class="dropDownBtn">
+				<i class="iconfont icon-pulldown"></i> 
+				<input type="text" placeholder="请输入金额" ng-model="searchKey" onkeyup="angular.element(this).scope().checkFee(this);" > 
+				<i class="iconfont icon-search"></i>
+			</div>
+
+		</div> -->
+
+
+			<div class="row timeDrop">
+
+				<input ng-model="searchKey"
+					onkeyup="angular.element(this).scope().checkFee(this);"
+					class="inputBox pullDownRight timeDrop border-radius" type="text"
+					placeholder="请输入金额"> <a href="javascript:;"
+					class="pullDownBtn fl"> <i class="iconfont icon-search"></i>
+				</a>
+
+			</div>
+
+			<div class="mg-l-24">
+				<button class="formBtn cardLabel border-radius"
+					ng-click="doSearch()">查询</button>
+			</div>
+
+
+		</div>
+		<div class="border-radius table-img tableRange">
+			<table class="table table-border">
+				<thead>
+					<tr>
+						<th>无匹配订单类型</th>
+						<th>收款通知时间</th>
+						<th>收到金额</th>
+						<th>状态</th>
+					</tr>
+				</thead>
+				<tbody>
+
+
+					<tr ng-repeat="item in rowList">
+						<td>{{item.type=='alipay'?'支付宝':'微信'}}</td>
+						<td>{{item.payTime}}</td>
+						<td>{{item.price/100}}</td>
+						<td>{{item.payState=='1'?'收款成功':'收款失败'}}</td>
+					</tr>
+
+					<tr ng-show="rowList.length<=0">
+						<td class="border-t-no">暂无数据</td>
+					</tr>
+
+				</tbody>
+			</table>
+
+			<div class="row pageBox" ng-show="rowList.length>0">
+				<div class="first" ng-click="indexPage()">首页</div>
+				<button class="btn mg-l-16 mg-r-16" ng-click="prePage()">上一页</button>
+
+				<button
+					class=" num btn mg-r-8  {{currentPage==page?'pageSelect':''}}"
+					ng-repeat="page in totalPageList" ng-click="onPageClick(page)">{{page}}</button>
+
+				<button class="num btn"
+					ng-show="totalPage>=5&&totalPage-currentPage>=5">...</button>
+
+				<button class="btn mg-l-8" ng-click="nextPage()">下一页</button>
+				<div class="up">
+					跳转到 <input type="number" ng-model="pageInput">页
+				</div>
+				<button class="btn mg-l-8" ng-click="skipPage()">确定</button>
+				<div class="end mg-r-16" ng-click="lastPage()">尾页</div>
+				<div class="end">当前第{{currentPage}}页/共{{totalPage}}页</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+</div>

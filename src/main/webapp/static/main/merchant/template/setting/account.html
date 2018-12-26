@@ -1,0 +1,113 @@
+<div ng-click="closeAllBox()">
+	<div class="public-Bg border-radius pd-24 mg-b-16">
+		<div class="row">
+			<div class="publicTitle tableTitle title-border pd-b-24">
+				<span>账号信息</span>
+			</div>
+		</div>
+
+		<div class="formHorizontal">
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">套餐到期时间</label>
+				<div class="controlInput actText">{{expireDate}}</div>
+			</div>
+			<div class="row mg-t-10">
+				<label class="controlLabel cardLabel  mg-r-24">剩余金额</label>
+				<div class="controlInput actText">{{fee/100}}</div>
+			</div>
+			<div class="row mg-t-10">
+				<label class="controlLabel cardLabel  mg-r-24">手续费（千分值）</label>
+				<div class="controlInput actText">{{procedures}}</div>
+			</div>
+
+			<div class="row mg-t-16">
+				<label class="controlLabel cardLabel  mg-r-24">充值</label>
+				<div class="column">
+					<div class="controlInput ">
+						<button class="btn rechargeBtn cardLabel"
+							ng-click="showRechargeBox()">充值</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="popoutBg border-radius editInput"
+		ng-show="isShowRechargeBox" style="min-height: 400px">
+		<div class="row fr">
+			<a href="javascript:;" class="closeBtn" ng-click="closeRechargeBox()">
+				<i class="iconfont icon-disable"></i>
+			</a>
+		</div>
+
+
+		<div class="textColor1 alertTitle">
+			<h4 class="textDold text-md">充值</h4>
+		</div>
+
+		<div ng-show="!isShowQrCode">
+			<div class="column">
+
+				<!-- <div class="row">
+					<label class="actText">账号：</label>
+					<div class="col-lg-5 row">
+						<div class="mg-t-8">{{renewalDetailObj.userName}}</div>
+					</div>
+				</div> -->
+
+				<div class="row mg-t-8">
+					<label class="controlLabel totalLabel mg-r-16">充值金额</label>
+
+					<div class="border-radius pre">
+
+						<div ng-click="showAppBox()" class="row timeDrop">
+
+							<input class="inputBox pullDownRight timeDrop border-radius"
+								type="text" placeholder="请选择金额" disabled="disabled"
+								ng-model="appObj.price"> <a href="javascript:;"
+								class="pullDownBtn fl"> <i class="iconfont icon-pulldown"></i>
+							</a>
+						</div>
+
+						<ul class="dropBox" ng-show="isShowAppBox">
+							<li ng-repeat="item in appList"><a href="javascript:;"
+								title="" ng-click="appChoise(item)">￥{{item.price/100}}</a></li>
+
+							<li ng-show="appList.length<1"><a href="javascript:;"
+								title="">暂无数据</a></li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="row mg-t-24">
+					<label class="controlLabel totalLabel mg-r-16"></label>
+					<div class="controlBtn">
+						<input class="formBtn submitBtn border-radius" type="button"
+							name="name" value="提交" ng-click="rechargeCommit()">
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="column " style="align-items: center;justify-content: center;" ng-show="isShowQrCode" >
+
+               <div class="row col-lg" style="justify-content: center;">
+					<label class="actText text-md totalLabel">金额：</label>
+					<div class="row">
+						<div class="mg-t-8 textDold textColorStar text-lg">{{isNeedToRechangeFee}}</div>
+					</div>
+				</div> 
+				
+				<!-- <img class="qrcodeImg" ng-src="{{qrcodeUrl}}" style="height:300px"/> -->
+
+			 <div class="qrcodeImg" id="qrCode"></div> 
+
+			<p class="mg-t-16 textColor1">请打开手机 {{payTypeText}}，扫一扫完成支付</p>
+		</div>
+
+	</div>
+
+</div>
+

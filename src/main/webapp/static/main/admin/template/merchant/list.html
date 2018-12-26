@@ -1,0 +1,204 @@
+
+<div class="nowNav mg-b-16">
+	<div class="row">
+		<span>当前位置：</span> <a href="javascript:;">商户管理</a> <i
+			class="mg-l-8 mg-r-8">/</i> <a href="javascript:;">商户列表</a>
+	</div>
+</div>
+<!--门店管理-->
+<div class="public-Bg border-radius pd-24 mg-b-16">
+	<div class="row">
+		<div class="publicTitle tableTitle title-border pd-b-24">
+			<span>商户管理</span>
+		</div>
+	</div>
+
+	<!-- <div class="row mg-t-24 mg-b-24">
+		<a href="#/merchant/add" class="manageBtn btn mg-r-8 select">添加用户</a>
+	</div> -->
+
+	<div class="row">
+		<div class="tabTitle mg-t-24 mg-b-24 border-radius box-border">
+			<ul>
+				<li class="tabSelect"><a href="#/merchant/list">商户管理</a></li>
+				<li><a href="#/merchant/add">新增商户</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="row mg-b-24">
+		<div class="dropDownBox border-radius box-border searchDropDown">
+			<div class="dropDownBtn">
+				<i class="iconfont icon-pulldown"></i> <input type="text"
+					placeholder="请输入账号" ng-model="searchKey"> <i
+					class="iconfont icon-search"></i>
+			</div>
+
+		</div>
+
+		<div class="mg-l-24">
+			<button class="formBtn cardLabel border-radius" ng-click="doSearch()">查询</button>
+		</div>
+
+	</div>
+
+	<div class="border-radius table-img tableRange">
+		<table class="table table-border">
+			<thead>
+				<tr>
+					<th>账号</th>
+					<th>商户名称</th>
+					<th>手机号码</th>
+					<th>剩余金额</th>
+					<th>手续费（千分值）</th>
+					<th>充值余额或修改手续费</th>
+					<th>是否启用</th>
+					<th>是否免套餐/手续费</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr ng-repeat="item in rowList">
+					<td>{{item.userName}}</td>
+					<td>{{item.account}}</td>
+					<td>{{item.mobile}}</td>
+					<td>{{item.sumFee/100}}</td>
+					<td>{{item.procedures}}</td>
+					<td class="tableItem">
+						<button class="btn rechargeBtn mg-r-8" ng-click="rechargeBalance(item)">充值余额</button>
+						<button class="btn rechargeBtn" ng-click="rechargeIntegral(item)">修改手续费</button>
+					</td>
+					<td>
+						<input type="checkbox" name="sex" id="switch1{{$index}}" class="chooseBtn" ng-model="item.isUse" ng-click="useClick(item)"> 
+						<label for="switch1{{$index}}" class="choose-label"></label>
+					</td>
+					<td>
+						<input type="checkbox" name="useAdmission" id="switch2{{$index}}" class="chooseBtn" ng-model="item.useOpen" ng-click="openUseAdmission(item)"> 
+						<label for="switch2{{$index}}" class="choose-label"></label>
+					</td>
+					<td>
+						<a href="#/merchant/edit/{{item.id}}" class="manageBtn btn mg-r-8">编辑</a>
+						<button class="btn mg-r-8 " ng-click="delete(item)">删除</button>
+					</td>
+				</tr>
+
+				<tr ng-show="rowList.length<=0">
+					<td class="border-t-no">暂无数据</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+
+
+		<div class="row pageBox" ng-show="rowList.length>0">
+			<div class="first" ng-click="indexPage()">首页</div>
+			<button class="btn mg-l-16 mg-r-16" ng-click="prePage()">上一页</button>
+
+			<button
+				class=" num btn mg-r-8  {{currentPage==page?'pageSelect':''}}"
+				ng-repeat="page in totalPageList" ng-click="onPageClick(page)">{{page}}</button>
+
+			<button class="num btn"
+				ng-show="totalPage>=5&&totalPage-currentPage>=5">...</button>
+
+			<button class="btn mg-l-8" ng-click="nextPage()">下一页</button>
+			<div class="up">
+				跳转到 <input type="number" ng-model="pageInput">页
+			</div>
+			<button class="btn mg-l-8" ng-click="skipPage()">确定</button>
+			<div class="end mg-r-16" ng-click="lastPage()">尾页</div>
+			<div class="end">当前第{{currentPage}}页/共{{totalPage}}页</div>
+		</div>
+
+
+	</div>
+</div>
+
+
+<div class="popoutBg border-radius editInput"
+	ng-show="isShowRechargeBalanceBox">
+	<div class="row fr">
+		<a href="javascript:;" class="closeBtn"
+			ng-click="closeRechargeBalanceBox()"> <i
+			class="iconfont icon-disable"></i>
+		</a>
+	</div>
+	<div class="textColor1 alertTitle">
+		<h4 class="textDold text-md">充值余额</h4>
+	</div>
+
+	<div class="column">
+
+
+		<div class="row mg-t-16">
+			<label class="controlLabel col-sm-5 mg-r-24 totalLabel">当前余额</label>
+			<div class="col-lg-5 row">
+				<div class="mg-t-8">{{rechargeBalanceObj.sumFee/100}}</div>
+			</div>
+		</div>
+
+		<div class="row mg-t-16">
+			<label class="controlLabel col-sm-5 mg-r-24 totalLabel">充值余额</label>
+			<div class="column col-lg-5">
+				<div class="cardInput row col-lg-8">
+					<input class="formInput" type="number" placeholder="请输入金额"
+						ng-model="moneyInput">
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row mg-t-24">
+			<label class="controlLabel col-sm-5 mg-r-24 totalLabel"></label>
+			<div class="row">
+				<button class="formBtn formBtnW border-radius"
+					ng-click="rechargeBalanceCommit()">提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="popoutBg border-radius editInput"
+	ng-show="isShowRechargeIntegralBox">
+	<div class="row fr">
+		<a href="javascript:;" class="closeBtn"
+			ng-click="closeRechargeIntegralBox()"> <i
+			class="iconfont icon-disable"></i>
+		</a>
+	</div>
+	<div class="textColor1 alertTitle">
+		<h4 class="textDold text-md">修改手续费</h4>
+	</div>
+	<div class="column">
+
+		<div class="row mg-t-16">
+			<label class="controlLabel col-sm-5 mg-r-24 inputSmSize">当前手续费（千分值）</label>
+			<div class="col-lg-5 row">
+				<div class="mg-t-8">{{rechargeIntegralObj.procedures}}</div>
+			</div>
+		</div>
+		<div class="row mg-t-16">
+			<label class="controlLabel col-sm-5 mg-r-24 inputSmSize">修改手续费（分）</label>
+			<div class="column col-lg-5">
+				<div class="cardInput row col-lg-8">
+					<input class="formInput" type="number" placeholder="请输入手续费"
+						ng-model="integralInput">
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row mg-t-24">
+			<label class="controlLabel col-sm-5 mg-r-24 inputSmSize"></label>
+			<div class="row">
+				<button class="formBtn formBtnW border-radius"
+					ng-click="rechargeIntegralCommit()">提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,127 @@
+<div ng-click="closeAllBox()">
+
+	<div class="nowNav mg-b-16">
+		<div class="row">
+			<span>当前位置：</span> <a href="javascript:;">应用列表</a> <i
+				class="mg-l-8 mg-r-8">/</i> <a href="javascript:;">新增应用</a>
+		</div>
+	</div>
+
+
+	<div class="public-Bg border-radius pd-24 mg-b-16">
+		<div class="row">
+			<div class="publicTitle tableTitle title-border pd-b-24">
+				<span>应用管理</span>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="tabTitle mg-t-24 mg-b-24 border-radius box-border">
+				<ul>
+					<li><a href="#/setMealPurchase/list">用户购买列表</a></li>
+					<li class="tabSelect"><a href="#/setMealPurchase/add">新增  </a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="formHorizontal">
+
+
+			<div class="row ">
+			<label class="controlLabel cardLabel mg-r-24">商户名称</label>
+				<!-- <label class="controlLabel cardLabel mg-r-24">商户名称</label> -->
+
+				<div class="mg-r-24  border-radius pre">
+
+					<div ng-click="showWechatBox()" class="row memberInput">
+
+						<input class="inputBox pullDownRight memberInput border-radius"
+							type="text" placeholder="请选择商户" disabled="disabled"
+							ng-model="wechatObj.userName"> <a href="javascript:;"
+							class="pullDownBtn fl"> <i class="iconfont icon-pulldown"></i>
+						</a>
+					</div>
+
+					<ul class="dropBox" ng-show="isShowWechatBox">
+						<li ng-repeat="item in authorizerList"><a href="javascript:;"
+							title="" ng-click="weChatChoise(item)">{{item.userName}}</a></li>
+
+						<li ng-show="authorizerList.length<1"><a href="javascript:;"
+							title="">暂无数据</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">套餐名称</label>
+
+				<div class="mg-r-24  border-radius pre">
+
+					<div ng-click="showAppBox()" class="row memberInput">
+
+						<input class="inputBox pullDownRight memberInput border-radius"
+							type="text" placeholder="请选择套餐" disabled="disabled"
+							ng-model="appObj.title"> <a href="javascript:;"
+							class="pullDownBtn fl"> <i class="iconfont icon-pulldown"></i>
+						</a>
+					</div>
+
+					<ul class="dropBox" ng-show="isShowAppBox">
+						<li ng-repeat="item in appList"><a href="javascript:;"
+							title="" ng-click="appChoise(item)">{{item.title}}</a></li>
+
+						<li ng-show="appList.length<1"><a href="javascript:;"
+							title="">暂无数据</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+
+			<!-- <div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">时间</label>
+				<div class="searchDropDown">
+					<input class="formInput" type="text" placeholder=""
+						ng-model="number" onkeyup="value=value.replace(/[^\d]/g,'')">
+				</div>
+			</div>
+
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">单位</label>
+
+				<div class="mg-r-24  pre  border-radius">
+
+					<div ng-click="showTypechange()" class="row timeDrop">
+
+						<input class="inputBox pullDownRight timeDrop border-radius"
+							type="text" placeholder="请选择单位" disabled="disabled"
+							ng-model="typeChangeObj.name"> <a href="javascript:;"
+							class="pullDownBtn fl"> <i class="iconfont icon-pulldown"></i>
+						</a>
+
+					</div>
+
+					<ul class="dropBox" ng-show="isShowTypeChange">
+						<li ng-repeat="item in changeTypeList"><a href="javascript:;"
+							title="" ng-click="typeChoise(item)">{{item.name}}</a></li>
+					</ul>
+				</div>
+
+				</label> -->
+
+			</div>
+
+
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24"></label>
+				<div class="controlBtn">
+					<input class="formBtn submitBtn border-radius" type="button"
+						name="name" value="提交" ng-click="commit()">
+				</div>
+			</div>
+
+		</div>
+
+	</div>

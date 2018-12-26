@@ -1,0 +1,157 @@
+
+<div class="nowNav mg-b-16">
+	<div class="row">
+		<span>当前位置：</span> <a href="javascript:;">商品管理</a> <i
+			class="mg-l-8 mg-r-8">/</i> <a href="javascript:;">商品列表</a>
+	</div>
+</div>
+<!--门店管理-->
+<div class="public-Bg border-radius pd-24 mg-b-16">
+	<div class="row">
+		<div class="publicTitle tableTitle title-border pd-b-24">
+			<span>商品管理</span>
+		</div>
+	</div>
+
+	<div class="row mg-t-24 mg-b-24">
+		<input class="formBtn inputSmSize border-radius" type="button"
+			name="name" value="添加商品" ng-click="showAddGoodsItem()">
+
+		<div class="row searchBox mg-l-24">
+			<div class="row search mg-r-24">
+				<input type="text" placeholder="请输入商品名称" ng-model="searchKey">
+				<i class="iconfont icon-search" ng-click="doSearch()"></i>
+			</div>
+		</div>
+
+	</div>
+	<div class="border-radius table-img tableRange">
+		<table class="table table-border">
+			<thead>
+				<tr>
+					<th>商品名称</th>
+					<th>定价</th>
+					<th>二维码数量</th>
+					<th>上传二维码</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr ng-show="isShowAddGoodsItem">
+					<td><input class="formInput" type="text" placeholder=""
+						ng-model="addName"></td>
+					<td><input class="formInput" type="text" placeholder=""
+						ng-model="addFee"
+						onkeyup="angular.element(this).scope().checkAddFee(this);"></td>
+					<td></td>
+					<td></td>
+
+					<td><a href="javascript:;" class="manageBtn btn mg-r-8"
+						ng-click="addGoodsFunc()">新增</a>
+						<button class="btn mg-r-8 select" ng-click="closeAddGoodsItem()">取消</button>
+
+					</td>
+				</tr>
+
+
+				<tr ng-repeat="item in rowList">
+					<td>{{item.name}}</td>
+					<td>¥{{item.fee/100}}</td>
+					<td>支付宝{{item.alipayQrcodeNum}}个，微信{{item.wechatQrcodeNum}}个</td>
+					<td><a href="javascript:;" class="file">上传二维码 <input
+							type="file" multiple="multiple"
+							onchange="angular.element(this).scope().choisePicFunc(this);"
+							ng-click="onItmeClick(item)">
+					</a></td>
+
+					<td>
+						<!--  <a href="add.html" class="manageBtn btn mg-r-8">编辑</a> -->
+						<button class="btn mg-r-8 " ng-click="delete(item)">删除</button>
+						<button class="btn mg-r-8 " ng-click="deleteAllQrCode(item)">清空二维码</button>
+						<a href="#/goods/qrCodeList/{{item.id}}"
+						class="btn mg-r-8">查看二维码</a>
+					</td>
+				</tr>
+
+
+				<tr ng-show="rowList.length<=0">
+					<td class="border-t-no">暂无数据</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+
+
+		<div class="row pageBox" ng-show="rowList.length>0">
+			<div class="first" ng-click="indexPage()">首页</div>
+			<button class="btn mg-l-16 mg-r-16" ng-click="prePage()">上一页</button>
+
+			<button
+				class=" num btn mg-r-8  {{currentPage==page?'pageSelect':''}}"
+				ng-repeat="page in totalPageList" ng-click="onPageClick(page)">{{page}}</button>
+
+			<button class="num btn"
+				ng-show="totalPage>=5&&totalPage-currentPage>=5">...</button>
+
+			<button class="btn mg-l-8" ng-click="nextPage()">下一页</button>
+			<div class="up">
+				跳转到 <input type="number" ng-model="pageInput">页
+			</div>
+			<button class="btn mg-l-8" ng-click="skipPage()">确定</button>
+			<div class="end mg-r-16" ng-click="lastPage()">尾页</div>
+			<div class="end">当前第{{currentPage}}页/共{{totalPage}}页</div>
+		</div>
+
+
+	</div>
+</div>
+
+<div class="popoutBg border-radius" ng-show="isShowUpLoadQrCodeBox"
+	style="width: 714px;">
+	<div class="row fr">
+		<a href="javascript:;" class="closeBtn"
+			ng-click="closeUpLoadQrCodeBox()"><i
+			class="iconfont icon-disable"></i></a>
+	</div>
+	<div class="textColor1 alertTitle">
+		<h4 class="textDold text-md">上传图片预览</h4>
+	</div>
+
+	<div class="border-bom pd-b-16">
+		<p class="textDold">注：如金额错误请在下面修改</p>
+	</div>
+
+	<div class="pd-b-24 pd-t-24 border-bom popoutBox"
+		style="max-height: 350px; min-height: 350px">
+
+		<div class="box-border preview mg-b-16"
+			ng-repeat="item in qrCodePicUrlList">
+			<img ng-src="{{item.url}}" alt="">
+
+			<div class="row previewBom">
+				<!-- <input class="box-border" type="text" ng-model="fee"
+					onkeyup="angular.element(this).scope().checkFee(this);"> <span
+					class="row">请输入金额</span> -->
+
+				<input class="box-border" type="text" ng-model="item.price"><span
+					class="row {{item.distinguish?'statusBg':''}}">{{item.existence?'未存在':'已存在'}}</span>
+
+			</div>
+			<div class="previewClose" ng-click="deletePicItem($index)">
+				<i class="iconfont icon-disable"></i>
+			</div>
+		</div>
+
+
+	</div>
+
+
+	<div class="row col-lg pd-t-24 " style="justify-content: flex-end">
+		<button class="rechargeBtn border-radius inputSmSize mg-r-8"
+			ng-click="cannelUpLoadFunc()">取消上传</button>
+		<button class="formBtn border-radius inputSmSize"
+			ng-click="comfirmUpLoadFunc()">确认上传</button>
+	</div>
+</div>

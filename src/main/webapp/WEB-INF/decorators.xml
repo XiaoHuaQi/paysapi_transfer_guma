@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<decorators defaultdir="/WEB-INF/decorators">
+<!-- 	<excludes>
+		<pattern>/admin/donate/import</pattern>
+	</excludes> -->
+	
+	<decorator name="admin-theme" page="admin-theme.jsp">
+		<pattern>/admin/*</pattern>
+	</decorator>
+</decorators>

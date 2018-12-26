@@ -1,0 +1,304 @@
+
+<div class="public-Bg border-radius pd-24 mg-b-16">
+
+	<div class="box-border border-radius mg-b-24">
+		<div class="publicTitle title-border">
+			<span>充值统计</span>
+		</div>
+
+		<div class="col-lg clearfix dataBigBox">
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataOne">
+						<i class="iconfont icon-Today"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{rechargeDto.nowDateFee
+							== undfinded ? '0': rechargeDto.nowDateFee/100}}</p>
+						<p>今日收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataTwo">
+						<i class="iconfont icon-Yesterday"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{rechargeDto.yesterdayFee
+							== undfinded ? '0': rechargeDto.yesterdayFee/100}}</p>
+						<p>昨日收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataThree">
+						<i class="iconfont icon-themoon"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{rechargeDto.thisMonthFee
+							== undfinded ? '0': rechargeDto.thisMonthFee/100}}</p>
+						<p>本月收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataFour">
+						<i class="iconfont icon-amount"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{rechargeDto.thirtyDateFee
+							== undfinded ? '0': rechargeDto.thirtyDateFee/100}}</p>
+						<p>总收入</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box-border border-radius mg-b-24">
+		<div class="publicTitle title-border">
+			<span>套餐购买统计</span>
+		</div>
+
+		<div class="col-lg clearfix dataBigBox">
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataOne">
+						<i class="iconfont icon-Today"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{setMealDto.nowDateFee
+							== undfinded ? '0': setMealDto.nowDateFee/100}}</p>
+						<p>今日收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataTwo">
+						<i class="iconfont icon-Yesterday"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{setMealDto.yesterdayFee
+							== undfinded ? '0': setMealDto.yesterdayFee/100}}</p>
+						<p>昨日收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataThree">
+						<i class="iconfont icon-themoon"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{setMealDto.thisMonthFee
+							== undfinded ? '0': setMealDto.thisMonthFee/100}}</p>
+						<p>本月收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataFour">
+						<i class="iconfont icon-amount"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{setMealDto.thirtyDateFee
+							== undfinded ? '0': setMealDto.thirtyDateFee/100}}</p>
+						<p>总收入</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box-border border-radius mg-b-24">
+		<div class="publicTitle title-border">
+			<span>商户订单统计</span>
+		</div>
+
+		<div class="col-lg clearfix dataBigBox">
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataOne">
+						<i class="iconfont icon-Today"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{statistics.nowDateFee
+							== undfinded ? '0': statistics.nowDateFee/100}}</p>
+						<p>今日收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataTwo">
+						<i class="iconfont icon-Yesterday"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{statistics.yesterdayFee
+							== undfinded ? '0': statistics.yesterdayFee/100}}</p>
+						<p>昨日收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataThree">
+						<i class="iconfont icon-themoon"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{statistics.thisMonthFee
+							== undfinded ? '0': statistics.thisMonthFee/100}}</p>
+						<p>本月收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataFour">
+						<i class="iconfont icon-amount"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{statistics.thirtyDateFee
+							== undfinded ? '0': statistics.thirtyDateFee/100}}</p>
+						<p>总收入</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="box-border border-radius">
+		<div class="publicTitle title-border">
+			<span>手续费统计</span>
+		</div>
+
+		<div class="col-lg clearfix dataBigBox">
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataOne">
+						<i class="iconfont icon-Today"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{proceduresDto.nowDateFee
+							== undfinded ? '0': -proceduresDto.nowDateFee/100}}</p>
+						<p>今日收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataTwo">
+						<i class="iconfont icon-Yesterday"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{proceduresDto.yesterdayFee
+							== undfinded ? '0': -proceduresDto.yesterdayFee/100}}</p>
+						<p>昨日收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataThree">
+						<i class="iconfont icon-themoon"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{proceduresDto.thisMonthFee
+							== undfinded ? '0': -proceduresDto.thisMonthFee/100}}</p>
+						<p>本月收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataFour">
+						<i class="iconfont icon-amount"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{proceduresDto.thirtyDateFee
+							== undfinded ? '0': -proceduresDto.thirtyDateFee/100}}</p>
+						<p>总收入</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+
+<!--     <div class="mg-b-16 row">
+        <div class="public-Bg pd-24 col-lg border-radius">
+            <div class="box-border border-radius">
+                <div class="publicTitle title-border">
+                    <span>订单数统计</span>
+                </div>
+                <div class="msgList clearfix">
+                    <ul>
+                        <li>
+                            <p class="textDold text-size-lg mg-b-8">{{statistics.nowDateNum  == undfinded ? '0': statistics.nowDateNum}}</p>
+                            <p>今日订单数</p>
+                        </li>
+                        <li>
+                            <p class="textDold text-size-lg mg-b-8">{{statistics.yesterdayNum  == undfinded ? '0': statistics.yesterdayNum}}</p>
+                            <p>昨日订单数</p>
+                        </li>
+                        <li>
+                            <p class="textDold text-size-lg mg-b-8">{{statistics.thisMonthNum  == undfinded ? '0': statistics.thisMonthNum}}</p>
+                            <p>本月订单数</p>
+                        </li>
+                        <li>
+                            <p class="textDold text-size-lg mg-b-8">{{statistics.thirtyDateNum  == undfinded ? '0': statistics.thirtyDateNum}}</p>
+                            <p>总订单数</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div> -->
+<div class="public-Bg pd-24 border-radius">
+	<div class="publicTitle tableTitle">
+		<span>最近十笔订单</span>
+	</div>
+	<table class="table table-border">
+		<thead>
+
+			<tr>
+				<th>支付时间</th>
+				<th>订单号</th>
+				<th>商户名称</th>
+				<th>商品名称</th>
+				<th>支付金额</th>
+				<th>支付类型</th>
+			</tr>
+
+		</thead>
+		<tbody>
+
+
+			<tr ng-repeat="item in list">
+				<td>{{item.payTime}}</td>
+				<td>{{item.outTradeNo}}</td>
+				<td>{{item.userName}}</td>
+				<td>{{item.commdityName}}</td>
+				<td>{{item.price/100}}</td>
+				<td>{{item.type=='alipay'?'支付宝':'微信支付'}}</td>
+
+			</tr>
+
+			<tr ng-show="list.length<=0">
+				<td class="border-t-no">暂无数据</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>

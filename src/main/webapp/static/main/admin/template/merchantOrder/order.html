@@ -1,0 +1,247 @@
+<div ng-click="closeAllBox()">
+
+
+<div class="public-Bg border-radius pd-24 mg-b-16">
+
+	<div class="row mg-b-24">
+
+		<div class="mg-r-24  border-radius pre">
+
+			<div ng-click="showWechatBox()" class="row memberInput">
+
+				<input
+					class="inputBox pullDownRight memberInput border-radius ng-pristine ng-untouched ng-valid"
+					type="text" placeholder="请选择商户" disabled="disabled"
+					ng-model="wechatObj.userName"> <a href="javascript:;"
+					class="pullDownBtn fl"> <i class="iconfont icon-pulldown"></i>
+				</a>
+			</div>
+
+			<ul class="dropBox" ng-show="isShowWechatBox">
+			    
+			    <li ng-click="userClickAll()"><a href="javascript:;"
+					title="">全部</a></li>
+					
+				<li ng-repeat="item in authorizerList"><a href="javascript:;"
+					title="" ng-click="weChatChoise(item)">{{item.userName}}</a></li>
+
+				<li ng-show="authorizerList.length<1"><a href="javascript:;"
+					title="">暂无数据</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="box-border border-radius">
+		<div class="publicTitle title-border">
+			<span>充值统计</span>
+		</div>
+
+		<div class="col-lg clearfix dataBigBox">
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataOne">
+						<i class="iconfont icon-Today"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{statistics.nowDateFee
+							== undfinded ? '0': statistics.nowDateFee/100}}</p>
+						<p>今日收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataTwo">
+						<i class="iconfont icon-Yesterday"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{statistics.yesterdayFee
+							== undfinded ? '0': statistics.yesterdayFee/100}}</p>
+						<p>昨日收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataThree">
+						<i class="iconfont icon-themoon"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{statistics.thisMonthFee
+							== undfinded ? '0': statistics.thisMonthFee/100}}</p>
+						<p>本月收入</p>
+					</div>
+				</div>
+			</div>
+			<div class="dataBox">
+				<div class="dataBg box-border border-radius row">
+					<div class="dataLeft dataFour">
+						<i class="iconfont icon-amount"></i>
+					</div>
+					<div class="dataRight">
+						<p class="textDold text-size-lg mg-b-8">￥{{statistics.thirtyDateFee
+							== undfinded ? '0': statistics.thirtyDateFee/100}}</p>
+						<p>总收入</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row mg-t-24 mg-b-24">
+		<div class="row">
+			<div class="defaultTime">
+				<input type="date" placeholder="请选择日期" ng-model="startTime"
+					ng-change="onStartTimeChange()">
+			</div>
+			<span class="actText mg-r-8 mg-l-8">至</span>
+			<div class="defaultTime">
+				<input type="date" placeholder="请选择日期" ng-model="endTime"
+					ng-change="onEndTimeChange()">
+			</div>
+		</div>
+
+		<div class="dropDownBox border-radius mg-l-24">
+
+			<div class="mg-r-24  border-radius pre">
+
+				<div ng-click="showTypechange()" class="row timeDrop">
+
+					<input class="inputBox pullDownRight timeDrop border-radius"
+						type="text" placeholder="请选择支付状态" disabled="disabled"
+						ng-model="typeChangeObj.name"> <a href="javascript:;"
+						class="pullDownBtn fl"> <i class="iconfont icon-pulldown"></i>
+					</a>
+
+				</div>
+
+				<ul class="dropBox" ng-show="isShowTypeChange">
+					<li ng-repeat="item in changeTypeList"><a href="javascript:;"
+						title="" ng-click="typeChoise(item)">{{item.name}}</a></li>
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="dropDownBox border-radius">
+
+			<div class="mg-r-24  border-radius pre">
+
+				<div ng-click="showTypechange1()" class="row timeDrop">
+
+					<input class="inputBox pullDownRight timeDrop border-radius"
+						type="text" placeholder="请选择收款渠道" disabled="disabled"
+						ng-model="typeChangeObj1.name"> <a href="javascript:;"
+						class="pullDownBtn fl"> <i class="iconfont icon-pulldown"></i>
+					</a>
+
+				</div>
+
+				<ul class="dropBox" ng-show="isShowTypeChange1">
+					<li ng-repeat="item in changeType1List"><a href="javascript:;"
+						title="" ng-click="typeChoise1(item)">{{item.name}}</a></li>
+				</ul>
+
+			</div>
+
+		</div>
+	</div>
+	<div class="row mg-b-24">
+
+		
+		<div class="dropDownBox border-radius box-border searchDropDown" >
+			<div class="dropDownBtn">
+				<i class="iconfont icon-pulldown"></i> 
+					<input type="text" placeholder="订单号" ng-model="orderIDKey"> 
+				<i class="iconfont icon-search"></i>
+			</div>
+
+		</div>
+		<div class="dropDownBox border-radius box-border searchDropDown" >
+			<div class="dropDownBtn">
+				<i class="iconfont icon-pulldown"></i> 
+					<input type="text" placeholder="系统订单号" ng-model="systemIDKey"> 
+				<i class="iconfont icon-search"></i>
+			</div>
+
+		</div>
+
+
+		<div class="mg-l-24">
+			<button class="formBtn cardLabel border-radius" ng-click="doSearch()">查询</button>
+		</div>
+
+	</div>
+
+	<div class="border-radius table-img tableRange">
+		<table class="table table-border">
+			<thead>
+				<tr>
+					<th>支付时间</th>
+					<th>商户名称</th>
+					<th>订单号</th>
+					<th>系统订单号</th>
+					<th>实价</th>
+					<th>支付状态</th>
+					<th>收款通道</th>
+					<th>回调地址</th>
+					<th>手续费（千分值）</th>
+					<th>扣除余额</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr ng-repeat="item in rowList">
+					<td>{{item.payTime}}</td>
+					<td>{{item.userName}}</td>
+					<td>{{item.outTradeNo}}</td>
+					<td>{{item.systemID}}</td>
+					<td>{{item.price/100}}</td>
+					<td>{{item.payState=='1'?'支付成功':'未支付'}}</td>
+					<td>{{item.type=='alipay'?'支付宝':(item.type=='balance'?'余额支付':'微信支付')}}</td>
+					<td>{{item.notifyUrl}}</td>
+					<td>{{item.procedures}}</td>
+					<td>{{item.proceduresFee/100}}</td>
+					<td>
+						<button class="btn mg-r-8 " ng-click="retransmission(item)">重发回调</button>
+					</td>
+				</tr>
+
+				<tr ng-show="rowList.length<=0">
+					<td class="border-t-no">暂无数据</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+
+		<div class="row pageBox" ng-show="rowList.length>0">
+			<div class="first" ng-click="indexPage()">首页</div>
+			<button class="btn mg-l-16 mg-r-16" ng-click="prePage()">上一页</button>
+
+			<button
+				class=" num btn mg-r-8  {{currentPage==page?'pageSelect':''}}"
+				ng-repeat="page in totalPageList" ng-click="onPageClick(page)">{{page}}</button>
+
+			<button class="num btn"
+				ng-show="totalPage>=5&&totalPage-currentPage>=5">...</button>
+
+			<button class="btn mg-l-8" ng-click="nextPage()">下一页</button>
+			<div class="up">
+				跳转到 <input type="number" ng-model="pageInput">页
+			</div>
+			<button class="btn mg-l-8" ng-click="skipPage()">确定</button>
+			<div class="end mg-r-16" ng-click="lastPage()">尾页</div>
+			<div class="end">当前第{{currentPage}}页/共{{totalPage}}页</div>
+		</div>
+
+
+	</div>
+
+
+</div>
+
+
+</div>

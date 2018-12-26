@@ -1,0 +1,78 @@
+
+<div class="nowNav mg-b-16">
+	<div class="row">
+		<span>当前位置：</span> <a href="javascript:;">套餐列表</a> <i
+			class="mg-l-8 mg-r-8">/</i> <a href="javascript:;">套餐详情</a>
+	</div>
+</div>
+
+<div class="public-Bg border-radius pd-24 mg-b-16">
+	<div class="">
+		<div class="mg-b-8">
+			<span class="mg-r-24 textDold text-md">{{detailObj.title}}</span>
+			<!-- <i class="textColor3">价格：15</i> -->
+		</div>
+		<div class="textColor2 mg-t-16">
+			<p>价格：{{detailObj.price/100}}</p>
+		</div>
+		<div class="textColor2 mg-t-16">
+			<p>费率（千分值）：{{detailObj.procedures}}</p>
+		</div>
+		<div class="textColor2 mg-t-16">
+			<p>时间：{{detailObj.timeStr}}</p>
+		</div>
+	</div>
+	<div class="col-lg pd-b-24 pd-t-24 clearfix">
+
+		<div class="appActRight">
+			<div class="row ">
+				<!-- <label class="mg-r-24 appActState"></label> -->
+				<button class="btn buyBtn select" ng-click="showRechargeBox()">立即购买</button>
+			</div>
+
+		</div>
+	</div>
+	<div class="appheadline mg-t-16">
+		<h3 class="textDold text-md">描述</h3>
+	</div>
+
+	<div class="row pd-b-16 pd-t-16">
+		<p>{{detailObj.describes}}</p>
+	</div>
+
+</div>
+
+
+<div class="popoutBg border-radius editInput"
+	ng-show="isShowRechargeBox" style="min-height: 400px">
+	<div class="row fr">
+		<a href="javascript:;" class="closeBtn" ng-click="closeRechargeBox()">
+			<i class="iconfont icon-disable"></i>
+		</a>
+	</div>
+
+	<div class="textColor1 alertTitle">
+		<h4 class="textDold text-md">购买</h4>
+	</div>
+
+	<div class="column "
+		style="align-items: center; justify-content: center;">
+
+		<div class="row col-lg" style="justify-content: center;">
+			<label class="actText text-md totalLabel">金额：</label>
+			<div class="row">
+				<div class="mg-t-8 textDold textColorStar text-lg">{{isNeedToRechangeFee}}</div>
+			</div>
+		</div>
+		
+		<!-- <img class="qrcodeImg" ng-src="{{qrcodeUrl}}" style="height: 300px" /> -->
+		
+		 <div class="qrcodeImg" id="qrCode"></div> 
+
+		<p class="mg-t-16 textColor1">请打开手机 {{payTypeText}}，扫一扫完成支付</p>
+	</div>
+
+</div>
+
+</div>
+

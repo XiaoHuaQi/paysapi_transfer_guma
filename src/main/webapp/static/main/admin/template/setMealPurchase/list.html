@@ -1,0 +1,184 @@
+<div ng-click="closeAllBox()">
+
+
+	<div class="nowNav mg-b-16">
+		<div class="row">
+			<span>当前位置：</span> <a href="javascript:;">用户购买详情</a> <i
+				class="mg-l-8 mg-r-8">/</i> <a href="javascript:;">用户购买详情列表</a>
+		</div>
+	</div>
+	
+	<!--门店管理-->
+	<div class="public-Bg border-radius pd-24 mg-b-16">
+		<div class="row">
+			<div class="publicTitle tableTitle title-border pd-b-24">
+				<span>用户购买详情</span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="tabTitle mg-t-24 mg-b-24 border-radius box-border">
+				<ul>
+					<li class="tabSelect"><a href="#/setMealPurchase/list">用户购买列表</a></li>
+					<li><a href="#/setMealPurchase/add">新增</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="row mg-b-24 mg-t-24">
+			<div class="dropDownBox border-radius box-border searchDropDown">
+				<div class="dropDownBtn">
+					<i class="iconfont icon-pulldown"></i> <input type="text"
+						placeholder="请输入账号" ng-model="searchKey"> <i
+						class="iconfont icon-search"></i>
+				</div>
+
+			</div>
+
+			<div class="mg-l-24">
+				<button class="formBtn cardLabel border-radius"
+					ng-click="doSearch()">查询</button>
+			</div>
+
+		</div>
+
+
+
+		<div class="border-radius table-img tableRange">
+			<table class="table table-border">
+				<thead>
+					<tr>
+						<th>账号</th>
+						<th>商户名称</th>
+						<th>手机号码</th>
+						<th>有效期</th>
+						<th>手续费（千分值）</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr ng-repeat="item in rowList">
+						<td>{{item.userName}}</td>
+						<td>{{item.account}}</td>
+						<td>{{item.mobile}}</td>
+						<td>{{item.expireDate}}</td>
+						<td>{{item.procedures}}</td>
+						<td><a href="javascript:;" class="manageBtn btn mg-r-8"
+							ng-click="renewal(item)">编辑</a>
+					</tr>
+
+
+					<tr ng-show="rowList.length<=0">
+						<td class="border-t-no">暂无数据</td>
+					</tr>
+
+				</tbody>
+			</table>
+
+			<div class="row pageBox" ng-show="rowList.length>0">
+				<div class="first" ng-click="indexPage()">首页</div>
+				<button class="btn mg-l-16 mg-r-16" ng-click="prePage()">上一页</button>
+
+				<button
+					class=" num btn mg-r-8  {{currentPage==page?'pageSelect':''}}"
+					ng-repeat="page in totalPageList" ng-click="onPageClick(page)">{{page}}</button>
+
+				<button class="num btn"
+					ng-show="totalPage>=5&&totalPage-currentPage>=5">...</button>
+
+				<button class="btn mg-l-8" ng-click="nextPage()">下一页</button>
+				<div class="up">
+					跳转到 <input type="number" ng-model="pageInput">页
+				</div>
+				<button class="btn mg-l-8" ng-click="skipPage()">确定</button>
+				<div class="end mg-r-16" ng-click="lastPage()">尾页</div>
+				<div class="end">当前第{{currentPage}}页/共{{totalPage}}页</div>
+			</div>
+
+
+		</div>
+	</div>
+
+
+	<div class="popoutBg border-radius editInput"
+		ng-show="isShowRenewalBox" style="min-height: 400px">
+		<div class="row fr">
+			<a href="javascript:;" class="closeBtn" ng-click="closeRenewalBox()">
+				<i class="iconfont icon-disable"></i>
+			</a>
+		</div>
+		<div class="textColor1 alertTitle">
+			<h4 class="textDold text-md">套餐修改</h4>
+		</div>
+		<div>
+			<div class="column">
+
+				<div class="row">
+					<label class="actText">账号：</label>
+					<div class="col-lg-5 row">
+						<div class="mg-t-8">{{renewalDetailObj.userName}}</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<label class="actText">商户名称：</label>
+					<div class="col-lg-5 row">
+						<div class="mg-t-8">{{renewalDetailObj.account}}</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<label class="actText">手续费（千分值）</label>
+					<div class="col-lg-5 row">
+						<div class="mg-t-8">{{renewalDetailObj.procedures}}</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<label class="actText">有效期：</label>
+					<div class="col-lg-5 row">
+						<div class="mg-t-8">{{renewalDetailObj.expireDate}}</div>
+					</div>
+				</div>
+
+
+				<div class="row mg-t-8">
+					<label class="controlLabel  mg-r-16">套餐名称</label>
+
+					<div class="border-radius pre">
+
+						<div ng-click="showAppBox()" class="row timeDrop">
+
+							<input class="inputBox pullDownRight timeDrop border-radius"
+								type="text" placeholder="请选择套餐" disabled="disabled"
+								ng-model="appObj.title"> <a href="javascript:;"
+								class="pullDownBtn fl"> <i class="iconfont icon-pulldown"></i>
+							</a>
+						</div>
+
+						<ul class="dropBox" ng-show="isShowAppBox">
+							<li ng-repeat="item in appList"><a href="javascript:;"
+								title="" ng-click="appChoise(item)">{{item.title}}</a></li>
+
+							<li ng-show="appList.length<1"><a href="javascript:;"
+								title="">暂无数据</a></li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="row mg-t-24">
+					<label class="actText"></label>
+					<div class="controlBtn">
+						<input class="formBtn submitBtn border-radius" type="button"
+							name="name" value="提交" ng-click="renewalCommit()">
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>

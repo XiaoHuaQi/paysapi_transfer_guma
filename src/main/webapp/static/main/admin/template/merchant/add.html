@@ -1,0 +1,71 @@
+<div ng-click="closeAllBox()">
+
+	<div class="nowNav mg-b-16">
+		<div class="row">
+			<span>当前位置：</span> <a href="javascript:;">商户管理</a> <i
+				class="mg-l-8 mg-r-8">/</i> <a href="javascript:;">新增商户</a>
+		</div>
+	</div>
+
+	<div class="public-Bg border-radius pd-24 mg-b-16">
+		<div class="row">
+			<div class="publicTitle tableTitle title-border pd-b-24">
+				<span>新增商户</span>
+			</div>
+		</div>
+		
+		<div class="row">
+		<div class="tabTitle mg-t-24 border-radius box-border">
+			<ul>
+				<li ><a href="#/merchant/list">商户管理</a></li>
+				<li class="tabSelect"><a href="#/merchant/add">新增商户</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+		<div class="formHorizontal">
+
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">账号</label>
+				<div class="searchDropDown">
+					<input class="formInput" type="text" placeholder=""
+						ng-model="userName">
+				</div>
+			</div>
+
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">用户名</label>
+				<div class="searchDropDown">
+
+					<input class="formInput" type="text" placeholder=""
+						ng-model="account">
+				</div>
+			</div>
+
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">密码</label>
+				<div class="searchDropDown">
+					<input class="formInput" type="password" placeholder=""
+						ng-model="password">
+				</div>
+			</div>
+
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">电话</label>
+				<div class="searchDropDown">
+					<input class="formInput" type="text" placeholder=""
+						ng-model="mobile">
+				</div>
+			</div>
+
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24"></label>
+				<div class="controlBtn">
+					<input class="formBtn submitBtn border-radius" type="button"
+						name="name" value="提交" ng-click="commit()">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

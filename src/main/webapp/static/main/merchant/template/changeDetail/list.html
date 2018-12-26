@@ -1,0 +1,80 @@
+
+<div class="nowNav mg-b-16">
+	<div class="row">
+		<span>当前位置：</span> <a href="javascript:;">资金变动明细</a>
+	</div>
+</div>
+<!--门店管理-->
+<div class="public-Bg border-radius pd-24 mg-b-16">
+	<div class="row">
+		<div class="publicTitle tableTitle title-border pd-b-24">
+			<span>资金变动明细</span>
+		</div>
+	</div>
+
+	<div class="row mg-t-24 mg-b-24">
+		<div class="row">
+			<div class="defaultTime">
+				<input type="date" placeholder="请选择日期" ng-model="startTime"
+					ng-change="onStartTimeChange()">
+			</div>
+			<span class="actText mg-r-8 mg-l-8">至</span>
+			<div class="defaultTime">
+				<input type="date" placeholder="请选择日期" ng-model="endTime"
+					ng-change="onEndTimeChange()">
+			</div>
+		</div>
+		<div class="mg-l-24">
+			<button class="formBtn cardLabel border-radius" ng-click="doSearch()">查询</button>
+		</div>
+	</div>
+	<div class="border-radius table-img tableRange">
+		<table class="table table-border">
+			<thead>
+				<tr>
+					<th>创建时间</th>
+					<th>变动前余额</th>
+					<th>变动后余额</th>
+					<th>变动金额</th>
+					<th class="col-md-3">变动原因及详情</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr ng-repeat="item in rowList">
+					<td>{{item.time}}</td>
+					<td>{{item.beforeFee/100}}</td>
+					<td>{{item.afterFee/100}}</td>
+					<td>{{item.changeFee/100}}</td>
+					<td>{{item.remarks}}</td>
+				</tr>
+
+				<tr ng-show="rowList.length<=0">
+					<td class="border-t-no">暂无数据</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+		<div class="row pageBox" ng-show="rowList.length>0">
+			<div class="first" ng-click="indexPage()">首页</div>
+			<button class="btn mg-l-16 mg-r-16" ng-click="prePage()">上一页</button>
+
+			<button
+				class=" num btn mg-r-8  {{currentPage==page?'pageSelect':''}}"
+				ng-repeat="page in totalPageList" ng-click="onPageClick(page)">{{page}}</button>
+
+			<button class="num btn"
+				ng-show="totalPage>=5&&totalPage-currentPage>=5">...</button>
+
+			<button class="btn mg-l-8" ng-click="nextPage()">下一页</button>
+			<div class="up">
+				跳转到 <input type="number" ng-model="pageInput">页
+			</div>
+			<button class="btn mg-l-8" ng-click="skipPage()">确定</button>
+			<div class="end mg-r-16" ng-click="lastPage()">尾页</div>
+			<div class="end">当前第{{currentPage}}页/共{{totalPage}}页</div>
+		</div>
+
+	</div>
+</div>

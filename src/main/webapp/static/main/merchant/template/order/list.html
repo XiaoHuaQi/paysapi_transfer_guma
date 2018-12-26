@@ -1,0 +1,148 @@
+<div ng-click="closeAllBox()">
+
+
+	<div class="nowNav mg-b-16">
+		<div class="row">
+			<span>当前位置：</span> <a href="javascript:;">订单管理</a>
+		</div>
+	</div>
+	<!--门店管理-->
+	<div class="public-Bg border-radius pd-24 mg-b-16">
+		<div class="row">
+			<div class="publicTitle tableTitle title-border pd-b-24">
+				<span>订单管理</span>
+			</div>
+		</div>
+
+		<div class="row mg-t-24 mg-b-24">
+			<div class="row">
+				<div class="defaultTime">
+					<input type="date" placeholder="请选择日期" ng-model="startTime"
+						ng-change="onStartTimeChange()">
+				</div>
+				<span class="actText mg-r-8 mg-l-8">至</span>
+				<div class="defaultTime">
+					<input type="date" placeholder="请选择日期" ng-model="endTime"
+						ng-change="onEndTimeChange()">
+				</div>
+			</div>
+
+			<div class="dropDownBox border-radius box-border mg-l-24">
+
+				<div class="mg-r-24  border-radius pre">
+
+					<div ng-click="showTypechange()" class="row timeDrop">
+
+						<input class="inputBox pullDownRight timeDrop border-radius"
+							type="text" placeholder="请选择收款通道" disabled="disabled"
+							ng-model="typeChangeObj.name"> <a href="javascript:;"
+							class="pullDownBtn fl"> <i class="iconfont icon-pulldown"></i>
+						</a>
+
+					</div>
+
+					<ul class="dropBox" ng-show="isShowTypeChange">
+						<li ng-repeat="item in changeTypeList"><a href="javascript:;"
+							title="" ng-click="typeChoise(item)">{{item.name}}</a></li>
+					</ul>
+
+				</div>
+
+
+			</div>
+		</div>
+		<div class="row mg-b-24">
+			<div class="dropDownBox border-radius box-border searchDropDown">
+				<div class="dropDownBtn">
+					<i class="iconfont icon-pulldown"></i> 
+						<input type="text" placeholder="请选择订单号" ng-model="searchKey"> 
+					<i class="iconfont icon-search"></i>
+				</div>
+
+			</div>
+			<div class="dropDownBox border-radius box-border searchDropDown" >
+				<div class="dropDownBtn">
+					<i class="iconfont icon-pulldown"></i> 
+						<input type="text" placeholder="系统订单号" ng-model="systemIDKey"> 
+					<i class="iconfont icon-search"></i>
+				</div>
+
+			</div>
+
+			<div class="mg-l-24">
+				<button class="formBtn cardLabel border-radius"
+					ng-click="doSearch()">查询</button>
+			</div>
+
+		</div>
+
+		<div class="border-radius table-img tableRange">
+			<table class="table table-border">
+				<thead>
+					<tr>
+						<th>创建时间</th>
+						<th>订单号</th>
+						<th>系统订单号</th>
+						<th>商品名称</th>
+						<th>通知接口</th>
+						<th>实价</th>
+						<th>状态</th>
+						<th>收款通道</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					<tr ng-repeat="item in rowList">
+						<td>{{item.payTime}}</td>
+						<td>{{item.outTradeNo}}</td>
+						<td>{{item.systemID}}</td>
+						<td>{{item.commdityName}}</td>
+						<td>{{item.notifyUrl}}</td>
+						<td>{{item.price/100}}</td>
+						<td>{{item.payState=='1'?'支付成功':'未支付'}}</td>
+						<td>{{item.type=='alipay'?'支付宝':'微信'}}</td>
+
+						<td>
+
+							<button class="btn mg-r-8 " ng-click="retransmission(item)">重发回调</button>
+
+						</td>
+
+					</tr>
+
+					<tr ng-show="rowList.length<=0">
+						<td class="border-t-no">暂无数据</td>
+					</tr>
+
+				</tbody>
+			</table>
+
+
+			<div class="row pageBox" ng-show="rowList.length>0">
+				<div class="first" ng-click="indexPage()">首页</div>
+				<button class="btn mg-l-16 mg-r-16" ng-click="prePage()">上一页</button>
+
+				<button
+					class=" num btn mg-r-8  {{currentPage==page?'pageSelect':''}}"
+					ng-repeat="page in totalPageList" ng-click="onPageClick(page)">{{page}}</button>
+
+				<button class="num btn"
+					ng-show="totalPage>=5&&totalPage-currentPage>=5">...</button>
+
+				<button class="btn mg-l-8" ng-click="nextPage()">下一页</button>
+				<div class="up">
+					跳转到 <input type="number" ng-model="pageInput">页
+				</div>
+				<button class="btn mg-l-8" ng-click="skipPage()">确定</button>
+				<div class="end mg-r-16" ng-click="lastPage()">尾页</div>
+				<div class="end">当前第{{currentPage}}页/共{{totalPage}}页</div>
+			</div>
+
+
+		</div>
+	</div>
+
+
+</div>

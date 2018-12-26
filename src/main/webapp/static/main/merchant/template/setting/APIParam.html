@@ -1,0 +1,53 @@
+
+<div class="public-Bg border-radius pd-24 mg-b-16">
+	<div class="row">
+		<div class="publicTitle tableTitle title-border pd-b-24">
+			<span>API接口参数设置</span>
+		</div>
+	</div>
+
+	<div class="formHorizontal">
+		<div class="row mg-t-24">
+			<label class="controlLabel inputSize mg-r-24">二维码过期时间(秒)</label>
+			<div class="column col-lg-5 memberInput">
+				<div class="controlInput">
+					<input class="formInput" type="text" placeholder=""
+						ng-model="overdueTime">
+				</div>
+				<div class="textColor2 mg-t-8">请谨慎设置，值越小掉单几率越大。可设置120-600秒之间的值(官方推荐值：360)。值越小，并发数越高，但用户可付款时间越短。达到设定值，二维码会在网页上显示失效。但对已经扫码未付款或保存二维码到手机的用户无效，他们依然可以在失效后付款成功，但会无法回调，导致掉单。</div>
+			</div>
+		</div>
+
+		<div class="row mg-t-24">
+			<label class="controlLabel inputSize mg-r-24">余额不足提醒(元)</label>
+			<div class="column col-lg-5 memberInput">
+				<input class="formInput" type="text" placeholder="请输入余额不足提醒"
+					ng-model="minFee" onkeyup="angular.element(this).scope().checkFee(this);">
+			</div>
+		</div>
+
+
+		<div class="row mg-t-24">
+			<label class="controlLabel inputSize mg-r-24">支付后，二维码立即可用</label>
+			<div class="column col-lg-5 memberInput">
+				<div class="row cardInput cardLevel">
+					<ul>
+						<li><label class="label mg-r-8"> <input class="input"
+								type="checkbox" name="service" ng-model="overdueTimeObj.isCheck">
+								<span class="span"></span>
+						</label>支付后立即可用</li>
+					</ul>
+				</div>
+				<div class="textColor2">推荐不勾选，防止因微信支付宝对同一订单重复通知导致的未收款回调(此情况非常少见，但依然有可能遇到。如您的收款手机网络非常好，通知无延迟，可以勾选)。勾选后，用户付完款的二维码会立即释放给下一个人使用。可提升并发数，并尽可能让用户看到整数金额。如不勾选，用户付完款后，此二维码会完整等待一轮二维码过期时间后才释放给下一个客户用。</div>
+			</div>
+		</div>
+
+		<div class="row mg-t-24">
+			<label class="controlLabel inputSize mg-r-24"></label>
+			<div class="controlBtn">
+				<input class="formBtn submitBtn border-radius" type="button"
+					name="name" value="提交" ng-click="commit()">
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,45 @@
+
+    <div class="public-Bg border-radius pd-24 mg-b-16">
+      <div class="row">
+        <div class="publicTitle tableTitle title-border pd-b-24">
+          <span>接口信息</span>
+        </div>
+      </div>
+
+      <div class="formHorizontal">
+        <div class="row mg-t-24">
+          <label class="controlLabel alertLabel mg-r-24">Uid</label>
+          <div class="controlInput actText">{{uuid}}</div>
+        </div>
+        <div class="row mg-t-10">
+          <label class="controlLabel alertLabel  mg-r-24">Token</label>
+          <div class="controlInput actText">{{token}}</div>
+        </div>
+        <div class="row mg-t-16">
+          <label class="controlLabel alertLabel  mg-r-24">重置</label>
+          <div class="column">
+            <div class="controlInput ">
+              <button class="btn rechargeBtn cardLabel" ng-click="resetToken()" >重置Token</button>
+            </div>
+            <div class="mg-t-8 textColor2">
+              <p>重置后，请立即修改您网站上的对应的token值，不然会导致接口无法使用。</p>
+              <p>建议在晚上较少人使用的情况下重置。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="popoutBg border-radius" style="display: none">
+      <div class="row fr">
+        <a href="#" class="closeBtn"><i class="iconfont icon-disable"></i></a>
+      </div>
+      <div class="textColor1 alertTitle">
+        <h4>确定要重置Token吗？</h4>
+      </div>
+      <div class="row">
+        <a href="" class="alertBtn btn select mg-r-8">确定</a>
+        <a href="" class="alertBtn btn">取消</a>
+      </div>
+    </div>
+

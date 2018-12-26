@@ -1,0 +1,102 @@
+<div ng-click="closeAllBox()">
+
+	<div class="nowNav mg-b-16">
+		<div class="row">
+			<span>当前位置：</span> <a href="javascript:;">套餐管理</a> <i
+				class="mg-l-8 mg-r-8">/</i> <a href="javascript:;">编辑套餐</a>
+		</div>
+	</div>
+
+	<div class="public-Bg border-radius pd-24 mg-b-16">
+		<div class="row">
+			<div class="publicTitle tableTitle title-border pd-b-24">
+				<span>编辑套餐</span>
+			</div>
+		</div>
+		
+		<div class="row">
+		<div class="tabTitle mg-t-24 border-radius box-border">
+			<ul>
+				<li ><a href="#/setMeal/list">套餐管理</a></li>
+				<li class="tabSelect"><a href="javascript:;">编辑套餐</a></li>
+			</ul>
+		</div>
+	</div>
+		
+
+		<div class="formHorizontal">
+
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">名称</label>
+				<div class="searchDropDown">
+					<input class="formInput" type="text" placeholder="" ng-model="title">
+				</div>
+			</div>
+
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">价格（分）</label>
+				<div class="searchDropDown">
+					
+					<input class="formInput" type="text" placeholder="" ng-model="price" onkeyup="value=value.replace(/[^\d]/g,'')">
+				</div>
+			</div>
+			
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">手续费<span class="text-sm">（千分值）</span></label>
+				<div class="searchDropDown">
+					<input class="formInput" type="text" placeholder="" ng-model="procedures" onkeyup="value=value.replace(/[^\d]/g,'')">
+				</div>
+			</div>
+			
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">时间</label>
+				<div class="searchDropDown">
+					<input class="formInput" type="text" placeholder="" ng-model="number" onkeyup="value=value.replace(/[^\d]/g,'')">
+				</div>
+			</div>
+
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">单位</label>
+
+				<div class="mg-r-24  pre  border-radius">
+
+					<div ng-click="showTypechange()" class="row timeDrop">
+
+						<input class="inputBox pullDownRight timeDrop border-radius"
+							type="text" placeholder="请选择性别" disabled="disabled"
+							ng-model="typeChangeObj.name"> <a href="javascript:;"
+							class="pullDownBtn fl"> <i class="iconfont icon-pulldown"></i>
+						</a>
+
+					</div>
+
+					<ul class="dropBox" ng-show="isShowTypeChange">
+						<li ng-repeat="item in changeTypeList"><a href="javascript:;"
+							title="" ng-click="typeChoise(item)">{{item.name}}</a></li>
+					</ul>
+				</div>
+
+				</label>
+
+			</div>
+			
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24">描述</label>
+				<div class="col-lg-5">
+				
+				<textarea class="textareaBox" name="" cols="30" rows="5" placeholder="" ng-model="describe"></textarea>
+					<!-- <input class="formInput" type="text" placeholder="" ng-model="describe"> -->
+				</div>
+			</div>
+			
+
+			<div class="row mg-t-24">
+				<label class="controlLabel cardLabel mg-r-24"></label>
+				<div class="controlBtn">
+					<input class="formBtn submitBtn border-radius" type="button"
+						name="name" value="提交" ng-click="commit()">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
