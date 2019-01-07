@@ -144,7 +144,7 @@ public class OrderController extends Thread {
 		if (fee <= 0) {
 			return ReturnDto.send(100009);
 		}
-		if (!"wechat".equals(type) && !"alipay".equals(type)) {
+		if (!"wechat".equals(type) && !"alipay".equals(type) && !"unionPay".equals(type)) {
 			return ReturnDto.send(100010);
 		}
 		if (outTradeNo.length() > 32) {
